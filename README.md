@@ -1,4 +1,4 @@
-# Python-projects
+# Python-project-Linear Regression
 Hands on projects
 Project: Linear Regression
 
