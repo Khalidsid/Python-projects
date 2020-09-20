@@ -1,0 +1,106 @@
+Puppet:
+------
+
+Push/pull configuration
+
+Puppet - pull
+Saltstack - push
+Ansible - push
+Chef - pull
+
+Puppet:
+
+Master-Slave arch
+ puppet master - puppet agent 1......puppet agent n
+ 
+ Puppet master - slave connection
+		puppet Agent
+ Generate puppet agent certificate:
+ 
+ puppet agent -t
+ puppet agent -t(update cmd)
+ 
+		Puppet master 
+	puppet cert list
+	puppet cert sign puppetagent
+ 
+Puppet Use-Case (Deploy MySql and PHP) 
+
+Write puppet manifest
+
+Classes and Resources -> Manifests -> Modules
+
+-Multiple resources can be clubbed to form a class
+-Class can be declared in any manifest or all    manifests. (/etc/puppet/manifests/site.pp)
+
+-Bundle all manifests together to form a Module.
+
+RESOURCE:
+=-------
+Anything (user, file) can be a resource.
+it describes state of system.
+A file should exist, package should be installed.
+
+Syntax:-
+
+resource_type { 'resource_name'
+	attribute => value
+	...
+	}
+	
+For Example:-
+	file { '/etc/inetd.conf':
+		ensure => '/etc/inet/inetd.conf',
+	}	
+
+
+Classes:-
+----------
+Multiple resources can be clubbed to form a class.
+
+Syntax :-
+======
+class exapmle_class {
+	...
+	code
+	...
+}	
+	
+	
+MANIFESTS:
+----------
+puppet programs are called manifests.
+manifests are composed of puppet code and their filenames use the .pp ext.
+
+Syntax:
+--------
+ include[class_Name]
+ class{'Class_Name'}
+ 
+class {'apache': } 
+ apache::vhost {'example.com' :
+ port => '80'
+ docroot => '/var/www/html'
+ }
+ }
+ 
+For Example:
+
+package { 'httpd' :
+ ensure => installed,
+}
+service { 'httpd':
+ ensure => running,
+}
+
+PUPPET MODULES:
+----------
+It is a collection of manifest and data (such as facts, files, and templates.) they have a specific dir structure. it is useful for organizing your puppet code, bcz they allow u to split your code into multiple manifests.
+
+	To add a module to Puppet, place it in /etc/puppet/modules dir.
+	
+Deploying Sql and Php 
+
+Download 2 modules .
+
+puppet module install puppetlabs-mysql --version 3.10.0	

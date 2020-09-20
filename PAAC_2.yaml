@@ -1,0 +1,26 @@
+format_version: 1
+pipelines:
+	ALM_Health_Check:
+		group: 
+		label_template: ${COUNT}
+		environment_variables:
+		secure_variables:
+		materials:
+			trigger:
+			git: https://almbot:alm123@infra.omegatooling.com/bitbucket/scm/al/alm_statistics.git
+		Stages:
+			- plan:
+				fetch_materials: true
+				keep_artifacts: false
+				clean_workspace: true
+				approval:
+					type: manual
+				jobs:
+                    trigger:
+                        tasks:
+                            - exec:
+                                command: /bin/bash
+                                arguments:
+                                - -c
+                                - echo "Connected!"
+                                run_if: passed

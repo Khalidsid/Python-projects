@@ -1,0 +1,12 @@
+environments:
+  ALM_Environment:
+    pipelines:
+      - ALM_Health_Check
+      - ALM_Statistics
+      - ALM_Stats_Table
+      - new_agent_test
+      - Test_ALM
+    environment_variables:
+    secure_variables:
+    agents:    
+      - 27a638d0-5c9c-415f-fad76124d610

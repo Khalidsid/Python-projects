@@ -1,0 +1,1 @@
+curl -s -k 'https://infra.omegatooling.com/go/api/admin/encrypt' -u 'sfraz:Teams@123' -H 'Accept: application/vnd.go.cd.v1+json' -H 'Content-Type: application/json' -X POST -d '{ "value": "OU=T6,OU=DEV Servers,OU=DEV Domain Management,DC=int,DC=cbspdev,Dc=com" }
